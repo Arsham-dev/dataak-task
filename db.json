@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "title": "سوال اول",
+      "createdAt": "2025-03-07T12:00:00.000Z",
+      "authorImage": "https://picsum.photos/200",
+      "description": "این یک سوال است",
+      "answers": [
+        {
+          "id": "1",
+          "createdAt": "2025-03-07T12:05:00.000Z",
+          "authorImage": "https://picsum.photos/200",
+          "authorName": "نام نویسنده",
+          "description": "این یک پاسخ است",
+          "like": 0,
+          "dislike": 0
+        }
+      ]
+    }
+  ]
+}
