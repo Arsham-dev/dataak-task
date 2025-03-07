@@ -7,7 +7,8 @@ const config: Config = {
       colors: {
         common: {
           white: '#ffffff',
-          black: '#222222'
+          black: '#222222',
+          gray: '#E2E2EA'
         },
         primary: {
           main: '#199DA3',

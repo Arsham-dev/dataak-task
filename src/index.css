@@ -3,11 +3,12 @@
 
 @font-face {
   font-family: 'Iranyekan';
-  src: url('./src/assets/fonts/BYekan+.ttf');
+  src: url('./src/assets/fonts/BYekan.ttf');
 }
 
 :root {
   font-family: Iranyekan;
 }
 body {
+  background-color: #fcfcfc;
 }

@@ -40,7 +40,7 @@ export const Button: FC<ButtonProps> = ({
             'flex w-full items-center justify-center': fullwidth
           },
           variant === 'primary' && [
-            'text-primary-contrastText',
+            'text-common-white',
             !disabled && {
               'bg-primary-main hover:bg-primary-dark active:bg-primary-light':
                 status === 'default',
