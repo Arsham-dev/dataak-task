@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# Dataak Task - Vite Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Dataak Task project! This is a Vite-based project designed to help you get started quickly with modern web development.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, ensure you have the following installed:
 
-## Expanding the ESLint configuration
+- [Node.js](https://nodejs.org/) (version 16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) (for package management)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Clone the Repository**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+   ```bash
+   git clone https://github.com/Arsham-dev/dataak-task.git
+   cd dataak-task
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Install Dependencies**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+   ```bash
+   npm install
+   ```
+
+   or
+
+   ```bash
+    yarn
+   ```
+
+3. **Create a `.env` File**
+
+   Create a `.env` file in the root of the project and add the following environment variables:
+
+   ```env
+   VITE_API_URL=https://api.example.com
+   ```
+
+   Replace `https://api.example.com` with the URL of the API you want to use.
+
+4. **Start the Development Server**
+
+   ```bash
+   npm run dev
+   ```
+
+   or
+
+   ```bash
+   yarn dev
+   ```
