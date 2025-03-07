@@ -1,10 +1,13 @@
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { Button, Modal } from '../../../components'
 import { Input } from '../../../components/Input'
 import * as Yup from 'yup'
 import validationSchema from './validation'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Question } from '../../../types'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import axiosClient from '../../../lib/client'
 interface NewQuestionModalProps {
   isOpen: boolean
   onClose: () => void
@@ -17,6 +20,7 @@ const defaultValues: FormType = {
 }
 
 const NewQuestionModal: FC<NewQuestionModalProps> = ({ isOpen, onClose }) => {
+  const queryClient = useQueryClient()
   const {
     watch,
     setValue,
@@ -27,10 +31,32 @@ const NewQuestionModal: FC<NewQuestionModalProps> = ({ isOpen, onClose }) => {
     resolver: yupResolver(validationSchema)
   })
 
+  const createQuestion = useCallback(async (data: FormType) => {
+    const question: Question = {
+      answers: [],
+      authorImage: 'https://picsum.photos/200/200',
+      createdAt: new Date().toISOString(),
+      description: data.description,
+      title: data.title,
+      id: String(Date.now())
+    }
+    await axiosClient.post('/questions', question)
+  }, [])
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: createQuestion,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['questions']
+      })
+      onClose()
+    }
+  })
+
   const onSubmit = (data: FormType) => {
-    console.log(data)
+    mutate(data)
   }
-  const isLoading = false
+  const isLoading = isPending
   return (
     <Modal
       title="سوال جدید"
