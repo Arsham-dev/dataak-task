@@ -6,9 +6,11 @@ import { RiEmotionHappyLine, RiEmotionUnhappyLine } from 'react-icons/ri'
 
 interface AnswerItemProps {
   answer: Answer
+  onLike: VoidFunction
+  onDislike: VoidFunction
 }
 
-const AnswerItem: FC<AnswerItemProps> = ({ answer }) => {
+const AnswerItem: FC<AnswerItemProps> = ({ answer, onDislike, onLike }) => {
   return (
     <div className="flex flex-col border rounded-lg bg-common-white border-gray-light shadow-drop">
       <div className="flex justify-between items-center py-1.5 px-4 border border-gray-light rounded-lg">
@@ -68,6 +70,7 @@ const AnswerItem: FC<AnswerItemProps> = ({ answer }) => {
           </div>
           <div className="flex gap-x-2">
             <Button
+              onClick={onLike}
               variant="outline"
               status="success"
               fullwidth
@@ -76,6 +79,7 @@ const AnswerItem: FC<AnswerItemProps> = ({ answer }) => {
               پاسخ خوب
             </Button>
             <Button
+              onClick={onDislike}
               variant="outline"
               status="error"
               fullwidth

@@ -3,29 +3,31 @@
     {
       "id": "1",
       "title": "سوال اول",
-      "createdAt": "2025-03-07T12:00:00.000Z",
+      "createdAt": "2025-03-07T14:27:53.517Z",
       "authorImage": "https://picsum.photos/200",
       "description": "این یک سوال است",
       "answers": [
         {
           "id": "1",
-          "createdAt": "2025-03-07T12:05:00.000Z",
+          "createdAt": "2025-03-07T14:27:53.517Z",
           "authorImage": "https://picsum.photos/200",
           "authorName": "نام نویسنده",
           "description": "این یک پاسخ است",
-          "like": 0,
-          "dislike": 0
-        },
-        {
-          "dislike": 0,
-          "like": 0,
-          "description": "یه تست دیگه",
-          "id": "1741357673160",
-          "createdAt": "2025-03-07T14:27:53.160Z",
-          "authorName": "موضوع سوال",
-          "authorImage": "https://picsum.photos/200/200"
+          "like": 13,
+          "dislike": 6
         }
-      ]
+      ],
+      "selectedAnswer": {
+        "id": "1",
+        "createdAt": "2025-03-07T14:27:53.517Z",
+        "authorImage": "https://picsum.photos/200",
+        "authorName": "نام نویسنده",
+        "description": "این یک پاسخ است",
+        "like": 13,
+        "dislike": 6
+      },
+      "change": -1,
+      "like": true
     },
     {
       "id": "1741356775499",
@@ -50,6 +52,14 @@
       "createdAt": "2025-03-07T14:18:17.885Z",
       "description": "یه تست دیگه",
       "title": "تست شماره ۵"
+    },
+    {
+      "id": "1741359202390",
+      "answers": [],
+      "authorImage": "https://picsum.photos/200/200",
+      "createdAt": "2025-03-07T14:53:22.390Z",
+      "description": "تست",
+      "title": "یه سوال دیگه"
     }
   ]
 }
