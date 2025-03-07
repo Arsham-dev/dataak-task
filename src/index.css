@@ -1,8 +1,13 @@
 @import 'tailwindcss';
 @config "../tailwind.config.ts";
 
+@font-face {
+  font-family: 'Iranyekan';
+  src: url('./src/assets/fonts/BYekan+.ttf');
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Iranyekan;
 }
 body {
 }

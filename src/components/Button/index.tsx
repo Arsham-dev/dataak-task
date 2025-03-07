@@ -35,7 +35,7 @@ export const Button: FC<ButtonProps> = ({
       aria-disabled={disabled}
       className={twMerge(
         clsx(
-          'relative overflow-hidden rounded px-3 transition-all duration-1000 ease-in-out h-9 text-sm font-normal max-sm:h-6',
+          'relative cursor-pointer overflow-hidden rounded px-3 transition-all duration-1000 ease-in-out h-9 text-sm font-normal max-sm:h-6',
           {
             'flex w-full items-center justify-center': fullwidth
           },
