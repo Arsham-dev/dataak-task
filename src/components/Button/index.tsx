@@ -65,12 +65,10 @@ export const Button: FC<ButtonProps> = ({
           ],
           (variant === 'text' || variant === 'outline') && [
             !disabled && {
-              'text-successful-main hover:text-successful-dark dark:text-dark-successful-main dark:hover:text-dark-successful-dark':
+              'text-successful-main hover:text-successful-dark':
                 status === 'success',
-              'text-error-main hover:text-error-dark dark:text-dark-error-main dark:hover:text-dark-error-dark':
-                status === 'error',
-              'text-primary-main dark:text-dark-primary-main':
-                status === 'default'
+              'text-error-main hover:text-error-dark': status === 'error',
+              'text-primary-main': status === 'default'
             },
             { 'text-gray-300 hover:text-gray-300': disabled }
           ],
