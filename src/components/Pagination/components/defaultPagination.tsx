@@ -22,6 +22,8 @@ const DefaultPagination: React.FC<DefaultPaginationProps> = ({
       <PaginationButton
         text={<RiArrowRightLine className="text-xl" />}
         onClick={() => onChange(page > 1 ? page - 1 : 1)}
+        disabled={page === 1}
+        border
       />
 
       {paginationRange.map((text, index) => {
@@ -42,6 +44,8 @@ const DefaultPagination: React.FC<DefaultPaginationProps> = ({
       <PaginationButton
         text={<RiArrowLeftLine className="text-xl" />}
         onClick={() => onChange(page < totalPage ? page + 1 : totalPage)}
+        disabled={page === totalPage}
+        border
       />
     </div>
   )

@@ -6,19 +6,27 @@ interface PaginationButtonProps {
   selected?: boolean
   onClick?: () => void
   disabled?: boolean
+  border?: boolean
 }
 const PaginationButton: React.FC<PaginationButtonProps> = ({
   text,
   selected,
   onClick,
-  disabled
+  disabled,
+  border
 }) => {
   return (
-    <div onClick={onClick} role="button" aria-label="pagination button">
+    <div
+      onClick={onClick}
+      role="button"
+      aria-label="pagination button"
+      className={clsx('cursor-pointer', {
+        'border-primary-main border rounded-lg': !disabled && border
+      })}>
       <Typography
         variant="subtitle1"
         className={clsx(
-          'flex h-8 cursor-pointer items-center justify-center rounded px-3.5 py-1 leading-6 transition-colors duration-300 ease-linear ',
+          'flex h-8 w-8 rounded-lg cursor-pointer items-center justify-center leading-6 transition-colors duration-300 ease-linear ',
           {
             'bg-primary-main text-common-white': selected,
             'text-gray-300': !selected
