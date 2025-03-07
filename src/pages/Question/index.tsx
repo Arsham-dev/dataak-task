@@ -5,8 +5,24 @@ import AnswerItem from './Answer'
 import { question } from '../../mock/question'
 import Layout from '../../components/Layout'
 import CreateAnswer from './CreateAnswer'
+import { useQuery } from '@tanstack/react-query'
+import axiosClient from '../../lib/client'
+import { useParams } from 'react-router'
+import { Question } from '../../types'
+
+type GetQuestionResponse = Question
 
 const QuestionPage: FC = () => {
+  const params = useParams()
+  const getData = async () => {
+    return (await axiosClient.get('/questions/' + params.id)).data
+  }
+
+  const { data } = useQuery<GetQuestionResponse>({
+    queryKey: ['questions'],
+    queryFn: getData
+  })
+
   return (
     <Layout title="سوال">
       <div className="flex flex-col gap-y-10">
@@ -20,7 +36,7 @@ const QuestionPage: FC = () => {
           <Typography variant="subtitle1" className="text-common-black">
             پاسخ ها
           </Typography>
-          {question.answers.map((answer) => (
+          {data?.answers?.map((answer) => (
             <AnswerItem answer={answer} key={answer.id} />
           ))}
         </div>
