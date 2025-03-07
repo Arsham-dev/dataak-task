@@ -8,7 +8,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Answer, Question } from '../../types'
 import { FC, useCallback } from 'react'
 import axiosClient from '../../lib/client'
-import { useParams } from 'react-router'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router'
 
 type FormType = Yup.InferType<typeof validationSchema>
 const defaultValues: FormType = {
@@ -20,12 +21,14 @@ interface CreateAnswerProps {
 
 const CreateAnswer: FC<CreateAnswerProps> = ({ question }) => {
   const queryClient = useQueryClient()
-  const params = useParams()
+  const navigate = useNavigate()
+
   const {
     watch,
     setValue,
     formState: { errors },
-    handleSubmit
+    handleSubmit,
+    reset
   } = useForm({
     defaultValues,
     resolver: yupResolver(validationSchema)
@@ -44,20 +47,23 @@ const CreateAnswer: FC<CreateAnswerProps> = ({ question }) => {
       }
       question?.answers?.push(answer)
 
-      await axiosClient.patch(`/questions/${params.id}/`, question)
+      await axiosClient.patch(`/questions/${question?.id}/`, question)
     },
-    [params.id, question]
+    [question]
   )
 
   const { mutate, isPending } = useMutation({
     mutationFn: createAnswer,
     onSuccess: () => {
+      toast.success('پاسخ شما با موفقیت ثبت شد')
       queryClient.invalidateQueries({
-        queryKey: ['question', params.id]
+        queryKey: ['question', question?.id]
       })
       queryClient.invalidateQueries({
         queryKey: ['questions']
       })
+      reset(defaultValues)
+      navigate('/questions')
     }
   })
 

@@ -15,19 +15,35 @@
           "description": "این یک پاسخ است",
           "like": 13,
           "dislike": 6
+        },
+        {
+          "dislike": 0,
+          "like": 0,
+          "description": "سلام",
+          "id": "1741360251219",
+          "createdAt": "2025-03-07T15:10:51.219Z",
+          "authorName": "موضوع سوال",
+          "authorImage": "https://picsum.photos/200/200"
+        },
+        {
+          "dislike": 0,
+          "like": 0,
+          "description": "یه تست",
+          "id": "1741360308486",
+          "createdAt": "2025-03-07T15:11:48.486Z",
+          "authorName": "موضوع سوال",
+          "authorImage": "https://picsum.photos/200/200"
+        },
+        {
+          "dislike": 0,
+          "like": 0,
+          "description": "تست",
+          "id": "1741360363179",
+          "createdAt": "2025-03-07T15:12:43.179Z",
+          "authorName": "موضوع سوال",
+          "authorImage": "https://picsum.photos/200/200"
         }
-      ],
-      "selectedAnswer": {
-        "id": "1",
-        "createdAt": "2025-03-07T14:27:53.517Z",
-        "authorImage": "https://picsum.photos/200",
-        "authorName": "نام نویسنده",
-        "description": "این یک پاسخ است",
-        "like": 13,
-        "dislike": 6
-      },
-      "change": -1,
-      "like": true
+      ]
     },
     {
       "id": "1741356775499",

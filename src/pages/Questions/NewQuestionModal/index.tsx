@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Question } from '../../../types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axiosClient from '../../../lib/client'
+import { toast } from 'react-toastify'
 interface NewQuestionModalProps {
   isOpen: boolean
   onClose: () => void
@@ -25,7 +26,8 @@ const NewQuestionModal: FC<NewQuestionModalProps> = ({ isOpen, onClose }) => {
     watch,
     setValue,
     formState: { errors },
-    handleSubmit
+    handleSubmit,
+    reset
   } = useForm({
     defaultValues,
     resolver: yupResolver(validationSchema)
@@ -46,9 +48,11 @@ const NewQuestionModal: FC<NewQuestionModalProps> = ({ isOpen, onClose }) => {
   const { mutate, isPending } = useMutation({
     mutationFn: createQuestion,
     onSuccess: () => {
+      toast.success('سوال شما با موفقیت ثبت شد')
       queryClient.invalidateQueries({
         queryKey: ['questions']
       })
+      reset(defaultValues)
       onClose()
     }
   })
