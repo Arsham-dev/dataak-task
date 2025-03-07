@@ -4,6 +4,7 @@ import QuestionItem from '../Questions/QuestionItem'
 import AnswerItem from './Answer'
 import { question } from '../../mock/question'
 import Layout from '../../components/Layout'
+import CreateAnswer from './CreateAnswer'
 
 const QuestionPage: FC = () => {
   return (
@@ -23,6 +24,7 @@ const QuestionPage: FC = () => {
             <AnswerItem answer={answer} key={answer.id} />
           ))}
         </div>
+        <CreateAnswer />
       </div>
     </Layout>
   )
