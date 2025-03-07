@@ -7,27 +7,20 @@ import { Typography } from '../Typography'
 export interface ModalProps {
   title: string
   content: React.ReactNode
-  type: 'success' | 'error' | 'default'
   isOpen: boolean
   animationVariant?: 'fade' | 'scale' | 'normal'
-  onAccept?: () => void
-  onCancel?: () => void
+  onClose?: () => void
   width?: string
   buttonContainerClassName?: string
-  className?: string
-  openFromBottom?: boolean
 }
 
 export const Modal: React.FC<ModalProps> = ({
   title,
   content,
-  type,
-  onCancel,
+  onClose,
   isOpen,
   width = 'w-[505px]',
-  animationVariant = 'normal',
-  className = 'text-black bg-white',
-  openFromBottom
+  animationVariant = 'normal'
 }) => {
   const [open, setopen] = useState<boolean>(true)
 
@@ -40,20 +33,16 @@ export const Modal: React.FC<ModalProps> = ({
   return open || isOpen ? (
     <div
       className={clsx(
-        'fixed left-0 top-0 z-40 flex h-screen w-screen transition-all duration-300 ease-linear',
+        'fixed left-0 top-0 z-40 flex h-screen w-screen transition-all duration-300 ease-linear items-center justify-center',
         {
-          'backdrop-blur': isOpen && open
-        },
-        {
-          'items-center justify-center': !openFromBottom,
-          'items-end justify-center': openFromBottom
+          'backdrop-blur-sm': isOpen && open
         }
       )}
       aria-label="Modal backdrop">
       <div
         className={twMerge(
           clsx(
-            'max-h-4/5 relative flex min-h-[210px]  flex-col overflow-hidden border p-4 transition-all duration-300 ease-linear',
+            'max-w-[90%] rounded-lg max-h-4/5 relative flex min-h-[210px] flex-col overflow-hidden transition-all duration-300 ease-linear shadow-drop',
             width,
             animationVariant === 'scale' && {
               'scale-0': !(isOpen && open),
@@ -65,38 +54,25 @@ export const Modal: React.FC<ModalProps> = ({
             },
             animationVariant === 'normal' && {
               hidden: !isOpen
-            },
-            {
-              'border-successful-main': type === 'success',
-              'border-error-main': type === 'error',
-              'border-gray-700': type === 'default'
-            },
-            {
-              'max-w-[90%] rounded': !openFromBottom,
-              'w-full max-w-full rounded-t': openFromBottom
             }
-          ),
-          className
+          )
         )}>
-        <MdOutlineCancel
-          className="right-4.5 top-4.5 absolute cursor-pointer text-lg text-gray-700 transition-opacity duration-300 ease-linear hover:opacity-80"
-          onClick={onCancel}
-          role="button"
-          aria-label="Close modal button"
-          title="Close modal"
-        />
-        <Typography className="mb-5 mt-4" variant="subtitle2">
-          {title}
-        </Typography>
-        <div
-          className="flex flex-1 flex-col overflow-y-auto"
-          aria-label="Modal content">
-          <Typography
-            variant="caption"
-            component="div"
-            className="leading-4.5 flex-1 overflow-auto">
-            {content}
+        <div className="flex justify-between items-center bg-common-white py-2.5 px-6">
+          <Typography className="text-common-black" variant="subtitle2">
+            {title}
           </Typography>
+          <MdOutlineCancel
+            className="cursor-pointer text-xl text-common-black transition-opacity duration-300 ease-linear hover:opacity-80"
+            onClick={onClose}
+            role="button"
+            aria-label="Close modal button"
+            title="Close modal"
+          />
+        </div>
+        <div
+          className="flex flex-1 flex-col overflow-y-auto p-5  bg-gray-more-light"
+          aria-label="Modal content">
+          {content}
         </div>
       </div>
     </div>

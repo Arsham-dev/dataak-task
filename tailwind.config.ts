@@ -33,7 +33,9 @@ const config: Config = {
         gray: {
           light: '#f5f5f5',
           main: '#777777',
-          dark: '#222222'
+          dark: '#222222',
+          moreLight: '#F9F9F9',
+          moreDark: '#454545'
         }
       },
       boxShadow: {

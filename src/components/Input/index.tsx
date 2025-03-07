@@ -1,5 +1,10 @@
 import clsx from 'clsx'
-import { InputHTMLAttributes, useState, HTMLInputTypeAttribute } from 'react'
+import {
+  InputHTMLAttributes,
+  useState,
+  HTMLInputTypeAttribute,
+  useCallback
+} from 'react'
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 import { Typography } from '..'
 import { twMerge } from 'tailwind-merge'
@@ -37,14 +42,14 @@ export const Input = ({
   onChange,
   ...otherProps
 }: InputProps) => {
-  const [focused, setfocused] = useState(false)
-  const [inputType, setinputType] = useState(type === 'password')
-  const onFocus = () => setfocused(true)
-  const onBlur = () => setfocused(false)
+  const [focused, setfocused] = useState<boolean>(false)
+  const [inputType, setinputType] = useState<boolean>(type === 'password')
+  const onFocus = useCallback(() => setfocused(true), [])
+  const onBlur = useCallback(() => setfocused(false), [])
 
   return (
     <div
-      className="gap-1.25 flex w-full flex-col text-sm font-normal leading-5"
+      className="gap-y-2.5 flex w-full flex-col text-sm font-normal leading-5"
       aria-disabled={disabled}>
       {label && (
         <div
@@ -52,9 +57,9 @@ export const Input = ({
           className={clsx(
             'gap-x-1.25 flex flex-row items-center transition-colors duration-300 ease-linear',
             {
-              'text-primary-main': !disabled && !error,
+              'text-gray-more-dark': !disabled && !error,
               'text-error-main': error,
-              'text-gray-500': disabled
+              'text-gray-main': disabled
             }
           )}>
           <Typography variant="body2">{label}</Typography>
@@ -74,15 +79,15 @@ export const Input = ({
               'shadow-xss': focused
             },
             variant === 'filled' && {
-              'bg-gray-100': color === 'default',
+              'bg-common-white border-gray-light border': color === 'default',
               'bg-primary-light': color === 'primary',
               'bg-gray-200': color === 'gray',
               'bg-transparent': color === 'transparent'
             },
             variant === 'filled' && {
-              'text-primary-main': color === 'primary',
+              'text-common-black': color === 'primary',
               'text-gray-900': color === 'default',
-              'text-gray-400': disabled
+              'text-gray-main': disabled
             },
             !multiline && 'h-10.5 max-sm:h-9',
             { 'h-auto': multiline },
@@ -129,7 +134,7 @@ export const Input = ({
                 'placeholder-error-main': error
               },
               variant === 'filled' && {
-                'placeholder-primary-main': color === 'primary'
+                'placeholder-gray-main': color === 'primary'
               }
             )}
             onChange={onChange}
@@ -176,9 +181,9 @@ export const Input = ({
                   'placeholder-error-main': error
                 },
                 variant === 'filled' && {
-                  'placeholder-primary-main': color === 'primary'
+                  'placeholder-gray-main': color === 'primary'
                 },
-                type !== 'password' && 'p-x',
+                type !== 'password' && 'px-4',
                 type === 'password' ? 'pl-4 pr-6' : undefined
               ),
               className
