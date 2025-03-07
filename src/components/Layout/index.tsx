@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren, ReactNode } from 'react'
 import { Typography } from '../Typography'
 import Logo from '../../assets/images/logo.png'
+import { Link } from 'react-router'
 
 interface LayoutProps extends PropsWithChildren {
   title: string
@@ -20,13 +21,15 @@ const Layout: FC<LayoutProps> = ({ HeaderItems, title, children }) => {
           {HeaderItems}
 
           <div className="w-px h-7 bg-common-gray" />
-          <img
-            src={Logo}
-            alt="logo"
-            className="w-8 h-8 rounded-full border border-common-gray"
-            width={32}
-            height={32}
-          />
+          <Link to="/questions">
+            <img
+              src={Logo}
+              alt="logo"
+              className="w-8 h-8 rounded-full border border-common-gray p-1.5"
+              width={32}
+              height={32}
+            />
+          </Link>
         </div>
       </div>
       <div className="px-8">{children}</div>
