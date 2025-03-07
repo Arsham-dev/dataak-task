@@ -19,7 +19,7 @@ const QuestionPage: FC = () => {
   }
 
   const { data } = useQuery<GetQuestionResponse>({
-    queryKey: ['questions'],
+    queryKey: ['question', params.id],
     queryFn: getData
   })
 
@@ -40,7 +40,7 @@ const QuestionPage: FC = () => {
             <AnswerItem answer={answer} key={answer.id} />
           ))}
         </div>
-        <CreateAnswer />
+        <CreateAnswer question={data} />
       </div>
     </Layout>
   )

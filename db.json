@@ -15,6 +15,15 @@
           "description": "این یک پاسخ است",
           "like": 0,
           "dislike": 0
+        },
+        {
+          "dislike": 0,
+          "like": 0,
+          "description": "یه تست دیگه",
+          "id": "1741357673160",
+          "createdAt": "2025-03-07T14:27:53.160Z",
+          "authorName": "موضوع سوال",
+          "authorImage": "https://picsum.photos/200/200"
         }
       ]
     },
