@@ -3,7 +3,51 @@
 
 @font-face {
   font-family: 'Iranyekan';
-  src: url('./src/assets/fonts/BYekan.ttf');
+  src: url('/Iranyekan_black.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iranyekan';
+  src: url('/fonts/Iranyekan_bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iranyekan';
+  src: url('/fonts/Iranyekan_medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iranyekan';
+  src: url('/fonts/Iranyekan.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iranyekan';
+  src: url('/fonts/Iranyekan_light.ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iranyekan';
+  src: url('/fonts/Iranyekan_thin.ttf');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iranyekan';
+  src: url('/fonts/Iranyekan_extrabold.ttf');
+  font-weight: 800;
+  font-style: normal;
 }
 
 :root {
