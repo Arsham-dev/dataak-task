@@ -9,6 +9,8 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axiosClient from '../../lib/client'
 import { useParams } from 'react-router'
 import { Answer, Question } from '../../types'
+import { usePagination } from '../../hooks/usePagination'
+import { Pagination } from '../../components/Pagination'
 
 type GetQuestionResponse = Question
 
@@ -52,6 +54,12 @@ const QuestionPage: FC = () => {
     }
   })
 
+  const { page, pageSize, totalPages, onPageChange } = usePagination(
+    data?.answers.length || 0,
+    1,
+    5
+  )
+
   return (
     <Layout title="سوال">
       <div className="flex flex-col gap-y-10">
@@ -65,14 +73,26 @@ const QuestionPage: FC = () => {
           <Typography variant="subtitle1" className="text-common-black">
             پاسخ ها
           </Typography>
-          {data?.answers?.map((answer) => (
-            <AnswerItem
-              answer={answer}
-              key={answer.id}
-              onLike={() => mutate({ selectedAnswer: answer, like: true })}
-              onDislike={() => mutate({ selectedAnswer: answer, like: false })}
-            />
-          ))}
+          {data?.answers
+            ?.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize)
+            .map((answer) => (
+              <AnswerItem
+                answer={answer}
+                key={answer.id}
+                onLike={() => mutate({ selectedAnswer: answer, like: true })}
+                onDislike={() =>
+                  mutate({ selectedAnswer: answer, like: false })
+                }
+              />
+            ))}
+        </div>
+        <div className="flex justify-end w-full">
+          <Pagination
+            page={page}
+            totalPage={totalPages}
+            onChange={onPageChange}
+            siblingCount={3}
+          />
         </div>
         <CreateAnswer question={data} />
       </div>
