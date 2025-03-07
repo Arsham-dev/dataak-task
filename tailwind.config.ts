@@ -6,10 +6,20 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          main: '#2d9cdb',
-          light: '#7bc1e8',
-          dark: '#00699c',
+          main: '#199DA3',
+          light: '#82e5e9',
+          dark: '#009298',
           contrastText: '#fff'
+        },
+        error: {
+          main: '#FF5630',
+          light: '#ffad9a',
+          dark: '#e42700'
+        },
+        successful: {
+          main: '#36B37E',
+          light: '#8adbb8',
+          dark: '#13875b'
         }
       }
     }
