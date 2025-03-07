@@ -35,7 +35,8 @@ const config: Config = {
           main: '#777777',
           dark: '#222222',
           moreLight: '#F9F9F9',
-          moreDark: '#454545'
+          moreDark: '#454545',
+          300: '#676767'
         }
       },
       boxShadow: {
